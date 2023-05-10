@@ -1,0 +1,95 @@
+﻿<Window x:Class="realty.ClientsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:realty"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Агентство недвижимости - Клиенты" Height="500" Width="800" MinWidth="500" MinHeight="450" Icon="Resources/icon.png" Closing="Window_Closing">
+    <Grid>
+        <DockPanel LastChildFill="False">
+            <TabControl DockPanel.Dock="Top">
+                <TabItem Header="Поиск" Style="{StaticResource ResourceKey=headerMenuTabItem}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBox x:Name="searchClients" HorizontalContentAlignment="Center" TextChanged="searchClients_TextChanged"/>
+                        <ListView x:Name="clientsListView" ItemsSource="{Binding}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Фамилия" Width="120" DisplayMemberBinding="{Binding Surname}"/>
+                                    <GridViewColumn Header="Имя" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Отчество" Width="120" DisplayMemberBinding="{Binding Patronymic}"/>
+                                    <GridViewColumn Header="Номер телефона" Width="160" DisplayMemberBinding="{Binding Phone}"/>
+                                    <GridViewColumn Header="Почта" Width="160" DisplayMemberBinding="{Binding Email}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+                </TabItem>
+                <TabItem HorizontalContentAlignment="Center" Header="Создание" Style="{StaticResource ResourceKey=headerMenuTabItem}">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Фамилия" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientSurname"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Имя" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientName"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Отчество" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientPatronimyc"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Телефон" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientPhone"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Почта" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientEmail"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <Button x:Name="btnCreateClient" Click="btnCreateClient_Click" Content="Создать" Style="{StaticResource ResourceKey=defaultButton}" BorderThickness="0"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem HorizontalContentAlignment="Center" Header="Редактирование" Style="{StaticResource ResourceKey=headerMenuTabItem}">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Клиент" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <ComboBox x:Name="clientCmb" Style="{StaticResource ResourceKey=defaultCmbBox}" SelectionChanged="clientCmb_SelectionChanged"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Фамилия" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientUpdateSurname"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Имя" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientUpdateName"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Отчество" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientUpdatePatronimyc"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Телефон" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientUpdatePhone"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Почта" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="clientUpdateEmail"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <Button x:Name="btnUpdateClient" Click="btnUpdateClient_Click" Content="Обновить" Style="{StaticResource ResourceKey=defaultButton}" BorderThickness="0"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem HorizontalContentAlignment="Center" Header="Удаление" Style="{StaticResource ResourceKey=headerMenuTabItem}">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Клиент" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <ComboBox x:Name="clientCmbForDelete" Style="{StaticResource ResourceKey=defaultCmbBox}" SelectionChanged="clientCmbForDelete_SelectionChanged"/>
+                        </StackPanel>
+                        <Button x:Name="btnDeleteClient" Click="btnDeleteClient_Click" Content="Удалить" Style="{StaticResource ResourceKey=defaultButton}" BorderThickness="0"/>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</Window>

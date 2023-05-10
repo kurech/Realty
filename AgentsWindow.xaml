@@ -1,0 +1,86 @@
+﻿<Window x:Class="realty.AgentsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:realty"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Агентство недвижимости - Риэлторы" Height="500" Width="800" MinWidth="500" MinHeight="450" Icon="Resources/icon.png" Closing="Window_Closing">
+    <Grid>
+        <DockPanel LastChildFill="False">
+            <TabControl DockPanel.Dock="Top">
+                <TabItem Header="Поиск" Style="{StaticResource ResourceKey=headerMenuTabItem}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBox x:Name="searchAgents" HorizontalContentAlignment="Center" TextChanged="searchAgents_TextChanged"/>
+                        <ListView x:Name="agentsListView" ItemsSource="{Binding}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Фамилия" Width="120" DisplayMemberBinding="{Binding Surname}"/>
+                                    <GridViewColumn Header="Имя" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Отчество" Width="120" DisplayMemberBinding="{Binding Patronymic}"/>
+                                    <GridViewColumn Header="Доля от комиссии" Width="160" DisplayMemberBinding="{Binding DealShare}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+                </TabItem>
+                <TabItem HorizontalContentAlignment="Center" Header="Создание" Style="{StaticResource ResourceKey=headerMenuTabItem}">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Фамилия" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="agentSurname"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Имя" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="agentName"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Отчество" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="agentPatronimyc"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Доля от комиссии" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="agentDealShare"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <Button x:Name="btnCreateAgent" Click="btnCreateAgent_Click"  Content="Создать" Style="{StaticResource ResourceKey=defaultButton}" BorderThickness="0"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem HorizontalContentAlignment="Center" Header="Редактирование" Style="{StaticResource ResourceKey=headerMenuTabItem}">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Риэлтор" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <ComboBox x:Name="agentCmbForUpdate" Style="{StaticResource ResourceKey=defaultCmbBox}" SelectionChanged="agentCmbForUpdate_SelectionChanged"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Фамилия" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="agentUpdateSurname"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Имя" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="agentUpdateName"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Отчество" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="agentUpdatePatronimyc"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Доля от комиссии" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <TextBox VerticalAlignment="Center" x:Name="agentUpdateDealShare"  Style="{StaticResource ResourceKey=defaultTxtbox}"/>
+                        </StackPanel>
+                        <Button x:Name="btnUpdateAgent" Click="btnUpdateAgent_Click"  Content="Обновить" Style="{StaticResource ResourceKey=defaultButton}" BorderThickness="0"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem HorizontalContentAlignment="Center" Header="Удаление" Style="{StaticResource ResourceKey=headerMenuTabItem}">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label VerticalAlignment="Center" Content="Риэлтор" Style="{StaticResource ResourceKey=defaultLabel}"/>
+                            <ComboBox x:Name="agentCmbForDelete" Style="{StaticResource ResourceKey=defaultCmbBox}" SelectionChanged="agentCmbForDelete_SelectionChanged"/>
+                        </StackPanel>
+                        <Button x:Name="btnDeleteAgent" Click="btnDeleteAgent_Click"  Content="Удалить" Style="{StaticResource ResourceKey=defaultButton}" BorderThickness="0"/>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</Window>

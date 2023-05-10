@@ -1,0 +1,32 @@
+﻿<Window x:Class="realty.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:realty"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Агентство недвижимости" Height="450" Width="800" MinWidth="450" MinHeight="450" Icon="Resources/icon.png" Closing="Window_Closing">
+    <Grid>
+        <DockPanel LastChildFill="False" Background="White">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem x:Name="menuClients" Click="menuClients_Click" Header="_Клиенты" Style="{StaticResource ResourceKey=headerMenu}">
+                </MenuItem>
+                <MenuItem x:Name="menuAgents" Click="menuAgents_Click" Header="_Риэлторы" Style="{StaticResource ResourceKey=headerMenu}">
+                </MenuItem>
+                <MenuItem Header="_Объекты недвижимости" Style="{StaticResource ResourceKey=headerMenu}">
+                </MenuItem>
+                <MenuItem Header="_Предложение" Style="{StaticResource ResourceKey=headerMenu}">
+                </MenuItem>
+                <MenuItem Header="_Потребность" Style="{StaticResource ResourceKey=headerMenu}">
+                </MenuItem>
+                <MenuItem Header="_Сделка" Style="{StaticResource ResourceKey=headerMenu}">
+                </MenuItem>
+            </Menu>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
+                <Image Margin="15" Source="Resources/logo.png" Width="150"></Image>
+                <Label Content="Главное меню" Style="{StaticResource ResourceKey=headerLabel}"></Label>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
